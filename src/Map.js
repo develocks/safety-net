@@ -1,5 +1,10 @@
 import { useListVals } from "react-firebase-hooks/database";
-import { GoogleMap, LoadScript, Circle } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  LoadScript,
+  Circle,
+  KmlLayer,
+} from "@react-google-maps/api";
 import firebase from "./firebase";
 import Loading from "./Loading";
 
@@ -23,6 +28,7 @@ export default function Map() {
         clickableIcons={false}
         mapContainerClassName="map"
       >
+        <KmlLayer url="https://www.google.com/maps/d/u/0/kml?mid=1eDx6D_PEhXr9YIzIjWfw6ZXKFs_wiZ5D" />
         {reports
           .filter(({ active }) => active)
           .map(({ latitude: lat, longitude: lng, radius, severity }, i) => (

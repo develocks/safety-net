@@ -74,6 +74,8 @@ function App() {
         </Content>
         <Footer style={{ textAlign: "center" }}>
           A <a href="https://develocks.dev">Develocks</a> initiative
+          <br />
+          Thanks to Devin Hitchings for the base map
         </Footer>
       </Layout>
     </div>
