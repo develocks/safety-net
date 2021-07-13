@@ -1,6 +1,7 @@
 import { useListVals } from "react-firebase-hooks/database";
 import { GoogleMap, LoadScript, Circle } from "@react-google-maps/api";
-import firebase from './firebase';
+import Loader from "react-loader-spinner";
+import firebase from "./firebase";
 
 const containerStyle = {
   width: "100vw",
@@ -12,11 +13,15 @@ const center = {
   lng: 25.014888,
 };
 
-const severityColor=[
-    '#00FF00','#FF0000']
+const severityColor = ["#00FF00", "#FF0000"];
 
 export default function Map() {
-  const [reports, loading, error] = useListVals(firebase.database().ref("reports"));
+  const [reports, loading, error] = useListVals(
+    firebase.database().ref("reports")
+  );
+  if (loading)
+    return <Loader type="Rings" color="#00BFFF" height={80} width={80} />;
+  if (error) return <span>Error occurred!</span>;
   return (
     <LoadScript googleMapsApiKey="AIzaSyDVh9CxxdFRMtj8c4r0tAKHxHI2gy1Cn_k">
       <GoogleMap
@@ -41,7 +46,7 @@ export default function Map() {
                 editable: false,
                 visible: true,
                 radius,
-                zIndex: severity+1,
+                zIndex: severity + 1,
               }}
               center={{ lat, lng }}
             />
