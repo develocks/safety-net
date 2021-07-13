@@ -6,10 +6,7 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/messaging";
 
-const firebaseConfig =
-  process.env.NODE_ENV === "production"
-    ? JSON.parse(process.env.FIREBASE)
-    : require("./firebaseConfig.json");
+import firebaseConfig from "./firebaseConfig.json";
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

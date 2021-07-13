@@ -11,12 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: echo "$FIREBASE" | base64 -d > src/firebaseConfig.json
+        env:
+          FIREBASE: ${{ secrets.FIREBASE }}
       - run: yarn --frozen-lockfile
         env:
           NODE_ENV: development
       - run: yarn build
         env:
-          FIREBASE: ${{ secrets.FIREBASE }}
           NODE_ENV: production
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
