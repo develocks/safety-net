@@ -80,7 +80,11 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          A <a href="https://develocks.dev">Develocks</a> initiative
+          A{" "}
+          <a href="https://develocks.dev">
+            <img height="25" src="/develocks.png" />
+          </a>{" "}
+          initiative
           <br />
           Thanks to Devin Hitchings for the base map
         </Footer>
