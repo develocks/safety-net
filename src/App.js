@@ -80,9 +80,11 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          A{" "}
+          Please note that we do not take responsibility for the data displayed
+          on this site.
+          <br />A{" "}
           <a href="https://develocks.dev">
-            <img height="25" src="/develocks.png" />
+            <img height="25" src="/develocks.png" alt="Develocks" />
           </a>{" "}
           initiative
           <br />
