@@ -31,7 +31,7 @@ function App() {
   const { pathname } = useLocation();
   const { push: navigate } = useHistory();
   const [user] = useAuthState(firebase.auth());
-  const analytics = firebase.analytics();
+  // const analytics = firebase.analytics();
 
 
   function onProfileClick() {
