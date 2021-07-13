@@ -5,6 +5,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/messaging";
+import "firebase/analytics";
 
 import firebaseConfig from "./firebaseConfig.json";
 // Initialize Firebase
