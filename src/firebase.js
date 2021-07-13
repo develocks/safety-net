@@ -4,6 +4,7 @@ import "firebase/analytics";
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/database";
+import "firebase/messaging";
 
 const firebaseConfig =
   process.env.NODE_ENV === "production"

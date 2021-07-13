@@ -1,15 +1,89 @@
-import "./App.css";
+import "./App.scss";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-
 import "./firebase";
 import Map from "./Map";
+import NotifyMe from "./NotifyMe";
+import Report from "./Report";
+import Login from "./Login";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
+import firebase from "./firebase";
+import Loading from "./Loading";
+import { Layout, Menu } from "antd";
+import Title from "antd/lib/typography/Title";
+import Profile from "./Profile";
+import { useAuthState } from "react-firebase-hooks/auth";
+const { Header, Content, Footer } = Layout;
+
+function AuthenticatedRoute({ children, ...rest }) {
+  const [user, loading, error] = useAuthState(firebase.auth());
+  if (error) return <span>An error occurred</span>;
+  if (loading) return <Loading />;
+  return <Route {...rest}>{user ? children : <Login />}</Route>;
+}
 
 function App() {
+  const { pathname } = useLocation();
+  const { push: navigate } = useHistory();
+  const [user] = useAuthState(firebase.auth());
+
+  function onProfileClick() {
+    firebase.auth().signOut();
+  }
+
   return (
     <div className="safety-net">
-      <Map />
+      <Layout>
+        <Header>
+          <Title>Safety Net</Title>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            onSelect={({ key }) => navigate(key)}
+            selectedKeys={[pathname]}
+          >
+            <Menu.Item key="/">Map</Menu.Item>
+            {/* <Menu.Item key="/report" >Report</Menu.Item> */}
+            {/* <Menu.Item key="/notify" >Notify me</Menu.Item> */}
+            {!!user && (
+              <Menu.Item key="profile" onClick={onProfileClick}>
+                <Profile />
+              </Menu.Item>
+            )}
+          </Menu>
+        </Header>
+        <Content>
+          <div>
+            <Switch>
+              <AuthenticatedRoute path="/notify">
+                <NotifyMe />
+              </AuthenticatedRoute>
+              <AuthenticatedRoute path="/report">
+                <Report />
+              </AuthenticatedRoute>
+              <Route path="/">
+                <Map />
+              </Route>
+            </Switch>
+          </div>
+        </Content>
+        <Footer style={{ textAlign: "center" }}>
+          A <a href="https://develocks.dev">Develocks</a> initiative
+        </Footer>
+      </Layout>
     </div>
   );
 }
 
-export default App;
+export default function RouteredApp({ children }) {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}
