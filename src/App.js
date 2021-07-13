@@ -7,9 +7,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 
-const firebaseConfig = {
-  // ...
-};
+import firebaseConfig from '../firebaseConfig.json';
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
