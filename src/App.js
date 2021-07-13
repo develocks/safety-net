@@ -1,5 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import firebase from "firebase/app";
+import "firebase/analytics";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
+const firebaseConfig = {
+  // ...
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
