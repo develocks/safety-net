@@ -18,7 +18,7 @@ import { Layout, Menu } from "antd";
 import Title from "antd/lib/typography/Title";
 import Profile from "./Profile";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 const { Header, Content, Footer } = Layout;
 
 function AuthenticatedRoute({ children, ...rest }) {
@@ -32,12 +32,12 @@ function App() {
   const { pathname } = useLocation();
   const { push: navigate } = useHistory();
   const [user] = useAuthState(firebase.auth());
-  useEffect(() => {
-    if (!window.location.host.includes("localhost"))
-      firebase.analytics().logEvent("page_view", {
-        page_path: pathname,
-      });
-  }, [pathname]);
+  // useEffect(() => {
+  //   if (!window.location.host.includes("localhost"))
+  //     firebase.analytics().logEvent("page_view", {
+  //       page_path: pathname,
+  //     });
+  // }, [pathname]);
 
   function onProfileClick() {
     firebase.auth().signOut();
