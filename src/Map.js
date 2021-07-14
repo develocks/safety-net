@@ -28,7 +28,13 @@ export default function Map() {
         clickableIcons={false}
         mapContainerClassName="map"
       >
-        <KmlLayer url="https://www.google.com/maps/d/u/0/kml?mid=1eDx6D_PEhXr9YIzIjWfw6ZXKFs_wiZ5D" />
+        {[
+          "https://www.google.com/maps/d/u/0/kml?mid=1eDx6D_PEhXr9YIzIjWfw6ZXKFs_wiZ5D&lid=I1hgzoaFZkk", // Gauteng Alert Area
+          "https://www.google.com/maps/d/u/0/kml?mid=1eDx6D_PEhXr9YIzIjWfw6ZXKFs_wiZ5D&lid=6JQOQgiGKfg", // Gauteng Active Incidents
+          "https://www.google.com/maps/d/u/0/kml?mid=1eDx6D_PEhXr9YIzIjWfw6ZXKFs_wiZ5D&lid=j99LeDMwjBc", // KZN
+        ].map((url, i) => (
+          <KmlLayer key={i} url={url} />
+        ))}
         {reports
           .filter(({ active }) => active)
           .map(({ latitude: lat, longitude: lng, radius, severity }, i) => (

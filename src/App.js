@@ -80,14 +80,13 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          We unfortunately cannot verify that all data is accurate and/or complete. Please be cautious and remain vigilant.
+          We unfortunately cannot verify that all data is accurate and/or
+          complete. Please be cautious and remain vigilant.
           <br />A{" "}
           <a href="https://develocks.dev">
             <img height="25" src="/develocks.png" alt="Develocks" />
           </a>{" "}
           initiative
-          <br />
-          Thanks to Devin Hitchings for the base map
         </Footer>
       </Layout>
     </div>
