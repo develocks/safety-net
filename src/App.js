@@ -80,8 +80,7 @@ function App() {
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Please note that we do not take responsibility for the data displayed
-          on this site.
+          We unfortunately cannot verify that all data is accurate and/or complete. Please be cautious and remain vigilant.
           <br />A{" "}
           <a href="https://develocks.dev">
             <img height="25" src="/develocks.png" alt="Develocks" />
